@@ -1,0 +1,370 @@
+/*
+Theme Name: MWRA Content Editor Style
+Author: GoingClear Interactive
+Author URI: https://www.goingclear.com/
+Version: 1.0.0
+Text Domain: mwra
+*/
+
+@import "bootstrap";
+
+/***********************************
+BASE STYLES
+***********************************/
+
+// COLORS
+$red: #EF4136;
+$base: #012169;
+$white: #FFFFFF;
+$black: #000000;
+$primary: #099F18;
+$secondary: #F1CAA6;
+
+// FONTS 
+@import url("https://use.typekit.net/bdz7uly.css");
+
+// FONTS 
+$halcom: "halcom", sans-serif;
+$nocturne: "nocturne-serif", serif;
+
+// MIXIN
+@import 'mixin';
+
+*:not(ul):not(ol) {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html, body, div, span, img, a, p, h1, h2, h3, 
+h4, h5, h6, option, legend, label, 
+table, th, td, tr, article, aside, 
+caption, figure, footer, header, hgroup, 
+mark, nav, section, time, audio, video {
+    margin: 0; 
+    padding: 0; 
+    border: 0; 
+    outline: 0;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+html {
+	margin: 0;
+	padding: 0;
+}
+
+ul, ol {
+	margin: 0;
+}
+
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	color: $black;
+	background: #F7F8FA;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	font: 400 16px/26px $halcom;
+}
+
+h1, .h1 { font-size: 64px; line-height: 77px; }
+h2, .h2 { font-size: 48px; line-height: 67px; }
+h3, .h3 { font-size: 36px; line-height: 42px; }
+h4, .h4 { font-size: 30px; line-height: 36px; }
+h5, .h5 { font-size: 24px; line-height: 34px; }
+h6, .h6 { font-size: 16px; line-height: 26px; }
+
+h1, h2, h3, h4, h5, h6, 
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	color: $base;
+	font-weight: 600;
+	font-family: $nocturne;
+}
+
+a, button {
+
+	&:hover, &:focus {
+		outline: 0;
+		text-decoration: none;
+	}
+}
+
+p {
+	margin: 0 0 30px;
+}
+
+hr {
+	margin: 0;
+	padding: 0;
+	border-color: $secondary;
+}
+
+section {
+	padding: 50px 0;
+}
+
+input[type="text"]:not(.select2-input),
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="password"],
+input[type="file"],
+select, textarea {
+	@include appearance;
+	width: 100% !important;
+	color: $base !important;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+	box-shadow: none !important;
+	line-height: 24px !important;
+	padding: 12px 20px !important;
+	background: $white !important;
+	border-radius: 500px !important;
+	border: 1px solid #E6E8EC !important;
+	@include transition(all 0.3s ease);
+	-webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+	@include placeholder($black, 16px, 400);
+
+	&:hover, &:focus {
+		outline: 0;
+	}
+}
+
+.btn {
+	border: 0;
+	outline: 0;
+	color: $white;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 26px;
+	background: $base;
+	padding: 11px 23px;
+	border-radius: 500px;
+	@include transition(all 0.3s ease);
+	box-shadow: 0px 36px 36px rgba(0, 0, 0, 0.25);
+
+	&.btn-primary {
+		background: $primary;
+
+		&:hover, &:focus, &:active {
+			color: $base !important;
+			background: $secondary !important;
+		}
+	}
+
+	&.btn-secondary {
+		color: $base;
+		background: $secondary;
+
+		&:hover, &:focus, &:active {
+			background: $primary !important;
+		}
+	}
+
+	&:hover, &:focus, &:active {
+		color: $white !important;
+		outline: 0 !important;
+		background: $primary !important;
+		box-shadow: 0px 36px 36px rgba(0, 0, 0, 0.25) !important;
+	}
+}
+
+.entry-title {
+
+	.sub-title {
+		display: block;
+	}
+
+	.title {
+		margin: 0;
+	}
+
+	p {
+		margin: 0;
+	}
+}
+
+.desc-big {
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 32px;
+}
+
+.font-family-nocturne {
+	font-family: $nocturne;
+}
+
+.container {
+	width: 100%;
+	max-width: 1240px;
+	padding-left: 30px;
+	padding-right: 30px;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.container-fluid {
+	padding-left: 50px;
+	padding-right: 50px;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.lr-10 {
+	margin-left: -10px;
+	margin-right: -10px;
+
+	>[class*="col"] {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+.list-inline {
+	margin-left: -5px;
+	margin-right: -5px;
+
+	li {
+		padding-left: 5px;
+		padding-right: 5px;
+		display: inline-block;
+	}
+}
+
+.fluid {
+	max-width: 100% !important;
+
+	br {
+		display: none;
+	}
+
+	h1, h2, h3, h4, h5, h6,
+	.h1, .h2, .h3, .h4, .h5, .h6, p, 
+	.entry-title, .description, .block-content, 
+	.content, .testi-item, .quote, 
+	.missionvission__content, .content__editor, .text {
+		max-width: 100% !important;
+	}
+}
+
+.content-area {
+	overflow: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.spacetop {
+	padding-top: 136px;
+}
+
+.help {
+	width: 15px;
+	height: 15px;
+	color: $white;
+	font-size: 6px;
+	line-height: 15px;
+	text-align: center;
+	position: relative;
+	background: $primary;
+	border-radius: 500px;
+	display: inline-block;
+	vertical-align: middle;
+
+	&.top {
+		vertical-align: top;
+	}
+
+	&:before {
+		content: "";
+		font-family: "safe-harbor-health";
+	}
+}
+
+.tooltip {
+
+	.arrow {
+		
+		&:before {
+			z-index: 2;
+			border: 0;
+			width: 10px;
+			height: 10px;
+			background: $white;
+		}
+	}
+
+	.tooltip-inner {
+		z-index: 1;
+		color: $black;
+		background: $white;
+		position: relative;
+		border: 1px solid $black;
+	}
+
+	&.show {
+	    opacity: 1;
+	}
+
+	&.bs-tooltip-top {
+
+		.arrow {
+			
+			&:before {
+				top: -5px;
+				border-left: 1px solid $black;
+				border-bottom: 1px solid $black;
+				@include transform(rotate(-45deg));
+			}
+		}
+	}
+
+	&.bs-tooltip-bottom {
+
+		.arrow {
+			
+			&:before {
+				bottom: -5px;
+				border-top: 1px solid $black;
+				border-left: 1px solid $black;
+				@include transform(rotate(45deg));
+			}
+		}
+	}
+
+	&.bs-tooltip-right {
+
+		.arrow {
+			
+			&:before {
+				left: 1px;
+				border-top: 1px solid $black;
+				border-left: 1px solid $black;
+				@include transform(rotate(-45deg));
+			}
+		}
+	}
+
+	&.bs-tooltip-left {
+
+		.arrow {
+			
+			&:before {
+				left: -5px;
+				border-top: 1px solid $black;
+				border-right: 1px solid $black;
+				@include transform(rotate(45deg));
+			}
+		}
+	}
+}
+
+@import "default_template";
