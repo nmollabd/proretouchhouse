@@ -98,7 +98,7 @@ input[type="url"], select, textarea {
 	background: #F4F1EC !important;
 	padding: 9px 16px 11px !important;
 	border: 1px solid #ECE6DA !important;
-	@include transition(all 0.3s ease);
+	@include transition(all 0.5s ease);
 	-webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -webkit-transform: translate3d(0, 0, 0);
