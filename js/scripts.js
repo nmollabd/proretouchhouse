@@ -69,19 +69,20 @@
 	});
 
     /*** ScrollDown */
-	$('.scrollDown').click(function() {
-	    var target = $('#primary');
-	    var space = $(this).data('space');
+    $('.scrollDown').click(function() {
+        var currentSection = $('section:visible'); 
+        var nextSection = currentSection.next('section');
 
-	    if (target.length) {
-	        $('html,body').animate({
-	          scrollTop: target.offset().top - space
-	        }, 1e3, "easeInOutExpo");
-	    }
-	});
+        if (nextSection.length) {
+            var space = $(this).data('space');
+            $('html, body').animate({
+                scrollTop: nextSection.offset().top - space
+            }, 1000, "easeInOutExpo");
+        }
+    });
 
 	/*** Smooth scroll */
-    	$('.sscroll, .sscroll a').click(function() {
+	$('.sscroll, .sscroll a').click(function() {
        	if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
            	var target = $(this.hash);
            	target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
@@ -414,6 +415,26 @@
 	        $(this).twentytwenty();
 	    });
 	});
+
+    // Disable right-click
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    function ctrlShiftKey(e, keyCode) {
+        return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+    }
+
+    document.onkeydown = (e) => {
+        // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+
+        if (
+            event.keyCode === 123 ||
+            ctrlShiftKey(e, 'I') ||
+            ctrlShiftKey(e, 'J') ||
+            ctrlShiftKey(e, 'C') ||
+            (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+        )
+
+        return false;
+    };
 
 
 }(jQuery));
